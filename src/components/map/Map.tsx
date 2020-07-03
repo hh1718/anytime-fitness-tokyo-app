@@ -4,7 +4,6 @@ import Title from '../common/Title';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Orders from '../common/Orders';
-import { DataProps } from '../../common/types';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -15,12 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Top = (props: DataProps) => {
+export const Map = () => {
   const classes = useStyles();
   return (
     <>
-      <Title>このサイトについて</Title>
+      <Title>地図</Title>
       <Grid container spacing={3}>
+          
           <Grid item xs={12}>
           <Paper className={classes.paper}>
               <Orders />

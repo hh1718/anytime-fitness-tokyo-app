@@ -10,18 +10,21 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Link from '@material-ui/core/Link';
-import { GymData, Station } from '../../common/types';
-import { wards } from '../../data/area'
+import Divider from '@material-ui/core/Divider';
+import { GymData } from '../../common/types';
+import { wards } from '../../data/area';
+import { getUrl } from '../../data/gymData';
+import { getAvatarColor } from '../../common/util';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 345,
+      maxWidth: 310,
+      textAlign: 'left'
     },
     media: {
       height: 0,
@@ -38,8 +41,17 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-      backgroundColor: red[500],
+      backgroundColor: avatorColor,
     },
+    cardItem: {
+      display: 'flex',
+      justifyContent: 'space-between'
+    },
+    hidden: {
+      visibility: 'hidden',
+      padding: '0',
+      height: '0'
+    }
   }),
 );
 
@@ -48,46 +60,43 @@ type OwnProps = {
 }
 
 export default function GymCard(props: OwnProps) {
-  const classes = useStyles();
+  const gym = props.gym
+  const classes = useStyles(getAvatarColor(gym.rank))();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  const gym = props.gym
-
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="gym_rank" className={classes.avatar}>
             {gym.rank}
           </Avatar>
         }
-        action={
+        /*action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
-        }
-        title={`${gym.name}店 (${wards[gym.area as keyof any]})`}
-        //subheader={wards[gym.area as keyof any]}
+        }*/
+        title={<Link  href={getUrl(gym.namekey)} target="_blank" rel="noopener" >{`${gym.name}店 (${wards[gym.area as keyof any]})`}</Link>}
+        subheader={gym.score}
       />
       <CardMedia
         className={classes.media}
         image="/static/images/cards/paella.jpg"
         title="Paella dish"
       />
-      <CardContent>
+      <CardContent className={classes.hidden}>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          This impressive paella is a perfect party dish and 
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/*<IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
+        </IconButton>*/}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -101,19 +110,40 @@ export default function GymCard(props: OwnProps) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-        　<Typography paragraph>
-            最寄駅: {gym.station.map((s) => <Link href={s.rentvalueUrl}>{s.name}</Link>,)}
+        <Divider />
+        　<Typography className={classes.cardItem}>
+            最寄駅:
+            <span>
+            {gym.station.map((s) =>
+              <Link href={s.rentvalueUrl} target="_blank" rel="noopener" key={`${gym.namekey}_${s.name}`}>
+                {s.name}
+              </Link>,
+            )}
+            </span>
           </Typography>
-          <Typography paragraph>パワーラック: {gym.powerRack}</Typography>
-          <Typography paragraph>スミスマシン: {gym.smithM}</Typography>
-          <Typography paragraph>ダンベル: {gym.dumbbell}</Typography>
-          <Typography paragraph>45度レッグプレス: {gym.legPress}</Typography>
-          <Typography paragraph>給水器: {gym.water ? 'あり' : ''}</Typography>
+          <Divider />
+          <Typography className={classes.cardItem}>
+            パワーラック: <span>{gym.powerRack}</span>
+          </Typography>
+          <Divider />
+          <Typography className={classes.cardItem}>
+            スミスマシン: <span>{gym.smithM}</span>
+          </Typography>
+          <Divider />
+          <Typography className={classes.cardItem}>
+            ダンベル: <span>{gym.dumbbell}</span>
+          </Typography>
+          <Divider />
+          <Typography className={classes.cardItem}>
+            45度レッグプレス: <span>{gym.legPress ? 'あり' : ''}</span>
+          </Typography>
+          <Divider />
+          <Typography className={classes.cardItem}>
+            給水器: <span>{gym.water ? 'あり' : ''}</span>
+          </Typography>
+          <Divider />
           <Typography paragraph>コメント:</Typography>
           <Typography paragraph>{gym.commnet}</Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
         </CardContent>
       </Collapse>
     </Card>

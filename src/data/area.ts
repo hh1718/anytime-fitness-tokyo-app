@@ -5,7 +5,7 @@ export const wards: any = {
   setagaya: '世田谷区',
   toshima: '豊島区',
   nerima: '練馬区',
-  itabshi: '板橋区',
+  itabashi: '板橋区',
   kita: '北区',
   taito: '台東区',
   chuo: '中央区',

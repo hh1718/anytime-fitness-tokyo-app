@@ -1,10 +1,10 @@
-import { GymData, Station } from '../common/types'
+import { GymData, Station, Rank } from '../common/types'
 
 const dataItem = (
   namekey: string,
   name: string,
   score: number,
-  rank: string,
+  rank: Rank,
   machine: string[],
   dumbbell: number,
   powerRack: number,
@@ -50,7 +50,7 @@ export const gymData: GymData[] = [
     [stationItem(['jrth'], '尾久', 'https://suumo.jp/chintai/soba/tokyo/ek_06650/')],
     'arakawa',
     false,
-    '一応最寄は都電荒川線「荒川遊園地前」駅だが場所的に微妙. マシンもそれなりにあって良さそう. ダンベルが何kgまであるかは不明だが期待を込めてA'
+    '一応最寄は都電荒川線「荒川遊園地前」駅だが場所的に微妙. マシンもそれなりにあって良さそう. ダンベルが何kgまであるかは不明だが期待を込めてA.'
   ),
   dataItem(
     'shinmikawashima',
@@ -143,12 +143,12 @@ export const gymData: GymData[] = [
     [stationItem(['jryt'], '新御徒町', 'https://suumo.jp/chintai/soba/tokyo/ek_50040/')],
     'taito',
     false,
-    'マシンの量は多め. DYロー, ハンマーストレングスのプレート式ラットプルダウン, プーリーローがる. マシンを重視するならここで, フリーウェイトなら近くの秋葉原店に行く感じが○'
+    'マシンの量は多め. DYロー, ハンマーストレングスのプレート式ラットプルダウン, プーリーローがる. マシンを重視するならここで, フリーウェイトなら近くの秋葉原店に行く感じが○.'
   ),
   dataItem(
     'akb',
     '秋葉原',
-    4.25,
+    4.35,
     'S',
     ['LifeFitness'],
     50,
@@ -277,7 +277,7 @@ export const gymData: GymData[] = [
   dataItem(
     'itabashi',
     '板橋',
-    3.95,
+    3.98,
     'A',
     ['LifeFitness'],
     50,
@@ -401,7 +401,7 @@ export const gymData: GymData[] = [
   dataItem(
     'sugamo',
     '巣鴨',
-    4.05,
+    4.2,
     'S',
     ['LifeFitness'],
     50,
@@ -476,7 +476,7 @@ export const gymData: GymData[] = [
   dataItem(
     'wasedadaigakumae',
     '早稲田大学前',
-    4.0,
+    4.1,
     'S',
     ['LifeFitness'],
     40,
@@ -521,7 +521,7 @@ export const gymData: GymData[] = [
   dataItem(
     'ochiai',
     '落合',
-    4.2,
+    4.3,
     'S',
     ['LifeFitness'],
     40,
@@ -552,7 +552,7 @@ export const gymData: GymData[] = [
   dataItem(
     'kagueki',
     '神楽坂駅前',
-    3.8,
+    3.78,
     'A',
     ['LifeFitness'],
     30,
@@ -612,7 +612,7 @@ export const gymData: GymData[] = [
   dataItem(
     'gyoenmae',
     '新宿御苑前',
-    4.03,
+    4.15,
     'S',
     ['LifeFitness', 'PRECOR'],
     50,
@@ -783,7 +783,7 @@ export const gymData: GymData[] = [
   dataItem(
     'shibah',
     '芝浜松町',
-    4.02,
+    4.01,
     'S',
     ['LifeFitness'],
     50,
@@ -996,7 +996,7 @@ export const gymData: GymData[] = [
   dataItem(
     'fudomae',
     '不動前',
-    4.25,
+    4.4,
     'S',
     ['LifeFitness', 'PRECOR'],
     40,
@@ -1236,8 +1236,8 @@ export const gymData: GymData[] = [
   dataItem(
     'honancho',
     '方南町',
-    4.00,
-    'A',
+    4.0,
+    'S',
     ['LifeFitness'],
     40,
     3,

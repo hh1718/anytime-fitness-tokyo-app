@@ -1,29 +1,59 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Title from '../common/Title';
+import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Orders from '../common/Orders';
+import { wards } from '../../data/area';
+import { DataProps } from '../../common/types';
+import GymCard from '../common/GymCard';
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
+  wardsWrap: {
     padding: theme.spacing(2),
     display: 'flex',
+    flexWrap: 'wrap',
     overflow: 'auto',
-    flexDirection: 'column',
   },
+  chip: {
+    margin: 3
+  },
+  gymItems: {
+    justifyContent: 'space-around'
+  }
 }));
 
-export const Area = () => {
+export const Area = (props: DataProps) => {
   const classes = useStyles();
+  const [area, setArea] = React.useState<string>('');
+  const showGymItems = area !== ''
+  const gymItems = props.gymData
   return (
-    <Grid container spacing={3}>
-        {/* Recent Orders */}
-        area
-        <Grid item xs={12}>
-        <Paper className={classes.paper}>
-            <Orders />
-        </Paper>
-        </Grid>
-    </Grid>
+    <>
+      <Title>東京23区</Title>
+      <div className={classes.wardsWrap}>
+        {Object.keys(wards).map((k) => (
+          <Chip
+            size="small"
+            label={wards[k]}
+            key={`area_${k}`}
+            className={classes.chip}
+            clickable
+            onClick={() => setArea(k)}
+          />
+        ))}
+      </div>
+      {showGymItems
+        ? (
+            <Grid container spacing={3} className={classes.gymItems}>
+              {gymItems.filter((gym) => gym.area === area).map((gym) =>
+                <Grid item key={`area_gym_${gym.namekey}`}>
+                  <GymCard gym={gym} />
+                </Grid>        
+              )}
+            </Grid>
+          )
+        : null
+      }
+    </>
   )
 }

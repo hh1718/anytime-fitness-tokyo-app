@@ -1,5 +1,5 @@
 
-export const trainLines = {
+export const trainLines: any = {
   jryt: 'JR山手線',
   jrkt: 'JR京浜東北線',
   jrth: 'JR東北本線',
