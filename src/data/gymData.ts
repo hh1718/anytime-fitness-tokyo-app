@@ -13,7 +13,8 @@ const dataItem = (
   station: Station[],
   area: string,
   water: boolean,
-  commnet: string
+  commnet: string,
+  thumbnail?: string
 ) => ({
   namekey,
   name,
@@ -27,7 +28,8 @@ const dataItem = (
   station,
   area,
   water,
-  commnet
+  commnet,
+  thumbnail
 })
 
 const stationItem = (lines: string[], name: string, rentvalueUrl: string) => ({
@@ -37,6 +39,182 @@ const stationItem = (lines: string[], name: string, rentvalueUrl: string) => ({
 })
 
 export const gymData: GymData[] = [
+  dataItem(
+    'akabane',
+    '赤羽',
+    3.0,
+    'B',
+    ['LifeFitness'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['jrkt', 'jrsk'], '赤羽', 'https://suumo.jp/chintai/soba/tokyo/ek_00380/')],
+    'kita',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/エニタイム赤羽外観.jpg'
+  ),
+  dataItem(
+    'akabanekita',
+    '赤羽北',
+    3.54,
+    'B',
+    ['LifeFitness', 'PRECOR'],
+    30,
+    2,
+    1,
+    true,
+    [stationItem(['jrsk'], '北赤羽', 'https://suumo.jp/chintai/soba/tokyo/ek_10870/')],
+    'kita',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2016/07/IMG_0020.jpg'
+  ),
+  dataItem(
+    'oji',
+    '王子',
+    3.05,
+    'B',
+    ['PRECOR'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['jrkt', 'tmnb'], '王子', 'https://suumo.jp/chintai/soba/tokyo/ek_00380/')],
+    'kita',
+    false,
+    'ダンベルはパワーブロックで41kgまで',
+    'https://suumo.jp/chintai/soba/tokyo/ek_05180/'
+  ),
+  dataItem(
+    'kasai',
+    '葛西',
+    3.05,
+    'B',
+    ['LifeFitness'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['tmtz'], '葛西', 'https://suumo.jp/chintai/soba/tokyo/ek_07760/')],
+    'edogawa',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/IMAG0063-1168x876.jpg'
+  ),
+  dataItem(
+    'nishikasai',
+    '西葛西',
+    3.0,
+    'B',
+    ['PRECOR'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['tmtz'], '西葛西', 'https://suumo.jp/chintai/soba/tokyo/ek_28520/')],
+    'edogawa',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/05/image21.jpg'
+  ),
+  dataItem(
+    'koiwa',
+    '小岩',
+    3.88,
+    'A',
+    ['LifeFitness'],
+    40,
+    2,
+    1,
+    true,
+    [stationItem(['jrsb'], '小岩', 'https://suumo.jp/chintai/soba/tokyo/ek_13900/')],
+    'edogawa',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/01/外観2.jpg'
+  ),
+  dataItem(
+    'kkoiwa',
+    '京成小岩',
+    3.4,
+    'B',
+    ['PRECOR'],
+    30,
+    2,
+    1,
+    false,
+    [stationItem(['kshs'], '京成小岩', 'https://suumo.jp/chintai/soba/tokyo/ek_13560/')],
+    'edogawa',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/06/IMG_2103.jpg'
+  ),
+  dataItem(
+    'shinkoiwa',
+    '新小岩',
+    3.6,
+    'A',
+    ['LifeFitness', 'PRECOR'],
+    30,
+    3,
+    0,
+    true,
+    [stationItem(['jrsb'], '新小岩', 'https://suumo.jp/chintai/soba/tokyo/ek_19450/')],
+    'katsusika',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/08/IMG_0913.jpg'
+  ),
+  dataItem(
+    'n-shibamata',
+    '新柴又',
+    3.4,
+    'B',
+    ['LifeFitness'],
+    40,
+    2,
+    1,
+    false,
+    [],
+    'katsusika',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/s_外観写真.jpg'
+  ),
+  dataItem(
+    'kitaayase',
+    '北綾瀬',
+    3.51,
+    'A',
+    ['PRECOR'],
+    40,
+    2,
+    1,
+    true,
+    [stationItem(['tmcy'], '北綾瀬', 'https://suumo.jp/chintai/soba/tokyo/ek_10900/')],
+    'adachi',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/12/IMG_3386aa.jpg'
+  ),
+  dataItem(
+    'takenotsuka',
+    '竹の塚',
+    3.0,
+    'B',
+    ['LifeFitness'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['tbis'], '竹の塚', 'https://suumo.jp/chintai/soba/tokyo/ek_22940/')],
+    'adachi',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/06/竹の塚店舗外観-1.jpg'
+  ),
   dataItem(
     'nishiogu',
     '西尾久',
@@ -50,7 +228,8 @@ export const gymData: GymData[] = [
     [stationItem(['jrth'], '尾久', 'https://suumo.jp/chintai/soba/tokyo/ek_06650/')],
     'arakawa',
     false,
-    '一応最寄は都電荒川線「荒川遊園地前」駅だが場所的に微妙. マシンもそれなりにあって良さそう. ダンベルが何kgまであるかは不明だが期待を込めてA.'
+    '一応最寄は都電荒川線「荒川遊園地前」駅だが場所的に微妙. マシンもそれなりにあって良さそう. ダンベルが何kgまであるかは不明だが期待をこめてA.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2016/07/image1.jpg'
   ),
   dataItem(
     'shinmikawashima',
@@ -143,7 +322,8 @@ export const gymData: GymData[] = [
     [stationItem(['jryt'], '新御徒町', 'https://suumo.jp/chintai/soba/tokyo/ek_50040/')],
     'taito',
     false,
-    'マシンの量は多め. DYロー, ハンマーストレングスのプレート式ラットプルダウン, プーリーローがる. マシンを重視するならここで, フリーウェイトなら近くの秋葉原店に行く感じが○.'
+    'マシンの量は多め. DYロー, プレートロードのプレート式ラットプルダウン, プーリーローがる. マシンを重視するならここで, フリーウェイトなら近くの秋葉原店に行く感じが○.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2015/11/外観.jpg'
   ),
   dataItem(
     'akb',
@@ -158,7 +338,8 @@ export const gymData: GymData[] = [
     [stationItem(['jryt'], '秋葉原', 'https://suumo.jp/chintai/soba/tokyo/ek_00480/')],
     'chiyoda',
     false,
-    'gent fitnessのお三方のパーソナルを受けられる. フリーウェイトが充実している. ショルダープレスマシンが欲しいかな. プーリーロー・Tバーローマシンがある.'
+    'gent fitnessのお三方のパーソナルを受けられる. フリーウェイトが充実している. ショルダープレスマシンが欲しいかな. プーリーロー・Tバーローマシンがある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/08/DcFe7yqVMAEA-Hx.jpg'
   ),
   dataItem(
     'kudanshita',
@@ -221,7 +402,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmhy', 'teak'], '東銀座', 'https://suumo.jp/chintai/soba/tokyo/ek_31870/')],
     'chuo',
     false,
-    '身なりの良い人が若干多い気がする'
+    '身なりの良い人が若干多い気がする',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2015/12/e-ginza1.jpg'
   ),
   dataItem(
     'bakuro',
@@ -291,7 +473,8 @@ export const gymData: GymData[] = [
     ],
     'itabashi',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/01/HP用外観写真⑤.jpeg'
   ),
   dataItem(
     'ohyama',
@@ -311,10 +494,10 @@ export const gymData: GymData[] = [
   dataItem(
     'senkawa',
     '千川',
-    2.8,
-    'C',
+    3.1,
+    'B',
     ['PRECOR', 'LifeFitness'],
-    0,
+    40,
     1,
     1,
     false,
@@ -336,7 +519,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmht'], '雑司が谷', 'https://suumo.jp/chintai/soba/tokyo/ek_80845/')],
     'toshima',
     true,
-    'ダンベルはパワーブロックで41kgまで利用可能. 近くにHERO GYMがある. プレートをつけるタイプのレッグプレスマシンが欲しい.'
+    'ダンベルはパワーブロックで41kgまで利用可能. 近くにHERO GYMがある. プレートをつけるタイプのレッグプレスマシンが欲しい.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/04/館外.jpg'
   ),
   dataItem(
     'shiinamachi',
@@ -351,7 +535,8 @@ export const gymData: GymData[] = [
     [stationItem(['sbib'], '椎名町', 'https://suumo.jp/chintai/soba/tokyo/ek_16970/')],
     'toshima',
     false,
-    'フリーウェイトのスペースが広々としていて充実しているが, 個人的にレッグプレスはLifeFitnessの方が好き.ナンパ禁止の張り紙が貼られている.'
+    'フリーウェイトのスペースが広々としていて充実しているが, 個人的にレッグプレスはLifeFitnessの方が好き.ナンパ禁止の張り紙が貼られている.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2015/10/外観縮小.jpg'
   ),
   dataItem(
     'ikebu',
@@ -411,7 +596,8 @@ export const gymData: GymData[] = [
     [stationItem(['jryt'], '巣鴨', 'hhttps://suumo.jp/chintai/soba/tokyo/ek_20550/')],
     'toshima',
     false,
-    'お年寄りの原宿と言われる巣鴨だが、設備は本格的. 老人筋トレブームの発信地か?'
+    'お年寄りの原宿と言われる巣鴨だが、設備は本格的. 老人筋トレブームの発信地か?',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/ジムスペース奥-1.jpg'
   ),
   dataItem(
     'komagome',
@@ -471,7 +657,8 @@ export const gymData: GymData[] = [
     [stationItem(['PRECOR'], '本郷3丁目', 'https://suumo.jp/chintai/soba/tokyo/ek_35340/')],
     'bunkyo',
     false,
-    '年季の入ったビルにあるジム.'
+    '年季の入ったビルにあるジム.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2014/03/3月写真④.jpg'
   ),
   dataItem(
     'wasedadaigakumae',
@@ -486,7 +673,8 @@ export const gymData: GymData[] = [
     [stationItem(['PRECOR'], '本郷3丁目', 'https://suumo.jp/chintai/soba/tokyo/ek_35340/')],
     'bunkyo',
     false,
-    '綺麗な内装でハンマーストレングス系のマシンが充実.やっぱり早稲田強し.'
+    '綺麗な内装でプレートロード系のマシンが充実.やっぱり早稲田強し.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/11/外観-1.jpg'
   ),
   dataItem(
     'ochiaiminaminagasaki',
@@ -501,7 +689,8 @@ export const gymData: GymData[] = [
     [stationItem(['teoe'], '落合南長崎', 'https://suumo.jp/chintai/soba/tokyo/ek_06960/')],
     'shinjyuku',
     true,
-    '綺麗な店舗でマシンも充実している. リアデルトのマシンがないのが欠点. DYローがある.'
+    '綺麗な店舗でマシンも充実している. リアデルトのマシンがないのが欠点. DYローがある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2016/05/002_0959.jpg'
   ),
   dataItem(
     'nakai',
@@ -532,7 +721,8 @@ export const gymData: GymData[] = [
     'shinjyuku',
     true,
     '設備は充実しており, 特に下半身のマシンは多い. ハンマーストレッグスのショルダープレスマシンはエニタイムでは珍しい.' + 
-    '若干下水っぽい匂いがするような気がするが, 気にするほどではない'
+    '若干下水っぽい匂いがするような気がするが, 気にするほどではない',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/03/s_01_0843.jpg'
   ),
   dataItem(
     'waseda',
@@ -547,7 +737,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmhy'], '西早稲田', 'https://suumo.jp/chintai/soba/tokyo/ek_80840/')],
     'shinjyuku',
     false,
-    'ジャパニーズレードルローイングジムというtバーローのようなマシンがあり良さげ. 早稲田の学生も喜ぶだろう.'
+    'ジャパニーズレードルローイングジムというtバーローのようなマシンがあり良さげ. 早稲田の学生も喜ぶだろう.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2020/02/正面入り口_page-0001-1-min.jpg'
   ),
   dataItem(
     'kagueki',
@@ -562,7 +753,8 @@ export const gymData: GymData[] = [
     [stationItem(['teoe'], '牛込神楽坂', 'https://suumo.jp/chintai/soba/tokyo/ek_50030/')],
     'shinjyuku',
     false,
-    'キラキラした感じ.'
+    'キラキラした感じ.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/07/test-3.jpg'
   ),
   dataItem(
     'kagurazaka',
@@ -592,7 +784,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmmu'], '西新宿', 'https://suumo.jp/chintai/soba/tokyo/ek_28860/')],
     'shinjyuku',
     false,
-    '綺麗'
+    '綺麗',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/09/IMG_2144.jpg'
   ),
   dataItem(
     'shinjuku',
@@ -625,7 +818,8 @@ export const gymData: GymData[] = [
     ],
     'shinjyuku',
     false,
-    '新宿２丁目に一番近い店舗. 土地柄のせいなのか, いかつめで短髪＋ひげの男性が多い気がする. プーリーロウがあっていい感じ. '
+    '新宿２丁目に一番近い店舗. 土地柄のせいなのか, いかつめで短髪＋ひげの男性が多い気がする. プーリーロウがあっていい感じ. ',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/新宿御苑前外観-2.jpg'
   ),
   dataItem(
     'akebonobashi',
@@ -646,7 +840,7 @@ export const gymData: GymData[] = [
     'hatsudai',
     '渋谷初台',
     3.0,
-    'A',
+    'B',
     ['LifeFitness', 'PRECOR'],
     30,
     1,
@@ -670,7 +864,8 @@ export const gymData: GymData[] = [
     [stationItem(['kos'], '笹塚', 'https://suumo.jp/chintai/soba/tokyo/ek_16280/')],
     'shibuya',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/12/無題1.png'
   ),
   dataItem(
     'yoyogi',
@@ -688,7 +883,8 @@ export const gymData: GymData[] = [
     ],
     'shibuya',
     false,
-    '日当たりよし'
+    '日当たりよし',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/02/007_外観北東面夜景_5471.jpg'
   ),
   dataItem(
     'ebisu',
@@ -703,7 +899,8 @@ export const gymData: GymData[] = [
     [stationItem(['jryt', 'tmhy'], '恵比寿', 'https://suumo.jp/chintai/soba/tokyo/ek_05050/')],
     'shibuya',
     false,
-    'スタイルの良い美女風のかたがちらほら. '
+    'スタイルの良い美女風のかたがちらほら. ',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/03/image-1.jpeg'
   ),
   dataItem(
     'hiroohsf',
@@ -718,7 +915,8 @@ export const gymData: GymData[] = [
     [stationItem(['jryt', 'tmhy'], '恵比寿', 'https://suumo.jp/chintai/soba/tokyo/ek_05050/')],
     'shibuya',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/06/IMG_2366.jpg'
   ),
   dataItem(
     'hiroo',
@@ -733,7 +931,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmhy'], '広尾', 'https://suumo.jp/chintai/soba/tokyo/ek_33410/')],
     'minato',
     false,
-    '閑静な高級住宅街に佇む筋肉の種. 不動前店と同様にファンクショナルトレーニングにも対応. サンドバックあり.'
+    '閑静な高級住宅街に佇む筋肉の種. 不動前店と同様にファンクショナルトレーニングにも対応. サンドバックあり.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/07/シナジーhp.jpg'
   ),
   dataItem(
     's-azabu3',
@@ -748,7 +947,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmhy'], '白金高輪', 'https://suumo.jp/chintai/soba/tokyo/ek_18940/')],
     'minato',
     false,
-    'こちらもサンドバックがありファンクショナルトレーニングにも対応.'
+    'こちらもサンドバックがありファンクショナルトレーニングにも対応.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/10/11.jpg'
   ),
   dataItem(
     's-azabu',
@@ -778,7 +978,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmcy'], '赤坂', 'https://suumo.jp/chintai/soba/tokyo/ek_00300/')],
     'minato',
     false,
-    '綺麗で上品な印象. TBSの前にあるがフジテレビのアナウンサーと遭遇した経験がある.'
+    '綺麗で上品な印象. TBSの前にあるがフジテレビのアナウンサーと遭遇した経験がある. 会費がハイプライス.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/04/IMG_1070.jpg'
   ),
   dataItem(
     'shibah',
@@ -793,7 +994,8 @@ export const gymData: GymData[] = [
     [stationItem(['temt'], '芝公園', 'https://suumo.jp/chintai/soba/tokyo/ek_17570/')],
     'minato',
     false,
-    '綺麗だし, とにかくフリーウェイトが強い. youtubeで店内を見れます.'
+    '綺麗だし, とにかくフリーウェイトが強い. youtubeで店内を見れます.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/05/15576352314960.jpg'
   ),
   dataItem(
     'sengakuji',
@@ -813,17 +1015,19 @@ export const gymData: GymData[] = [
   dataItem(
     'shibaura',
     '芝浦',
-    4.02,
+    4.08,
     'S',
     ['LifeFitness'],
-    30,
+    40,
     3,
     1,
     false,
     [stationItem(['teak'], '泉岳寺', 'https://suumo.jp/chintai/soba/tokyo/ek_21340/')],
     'minato',
     false,
-    '物理的な距離は高輪ゲートウェイが近いが, 行きづらい. 設備はとても良い. 近隣のタワマンを見上げられる.'
+    '物理的な距離は高輪ゲートウェイが近いが,行きづらい. 設備はとても良い. 近隣のタワマンを見上げられる.' +
+    '45度レッグプレスはないが、ハンマーストレッグスのプレート式ハックスクワットがある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2014/03/0428.jpg'
   ),
   dataItem(
     'mita',
@@ -838,7 +1042,8 @@ export const gymData: GymData[] = [
     [stationItem(['teoe'], '赤羽橋', 'https://suumo.jp/chintai/soba/tokyo/ek_50065/')],
     'minato',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/06/34131422_1790358384413319_5709930553541656576_n.jpg'
   ),
   dataItem(
     'nakameguroaobadai',
@@ -868,7 +1073,8 @@ export const gymData: GymData[] = [
     [stationItem(['tkdt'], '池尻大橋', 'https://suumo.jp/chintai/soba/tokyo/ek_02000/')],
     'meguro',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2020/03/IMG_2895.jpg'
   ),
   dataItem(
     'yutenji',
@@ -883,7 +1089,8 @@ export const gymData: GymData[] = [
     [stationItem(['tkty'], '祐天寺', 'https://suumo.jp/chintai/soba/tokyo/ek_40640/')],
     'meguro',
     false,
-    ''
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2020/02/PJWQ2720-min-min.jpeg'
   ),
   dataItem(
     'gakugeidai',
@@ -913,22 +1120,72 @@ export const gymData: GymData[] = [
     [stationItem(['tkty'], '都立大学', 'https://suumo.jp/chintai/soba/tokyo/ek_26730/')],
     'meguro',
     false,
-    'ハンマーストレングスのラットプルがある.'
+    'プレートロードのラットプルがある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/11/エントランス.jpg'
   ),
   dataItem(
-    'takanawadai',
-    '高輪台',
-    2.95,
-    'C',
+    'wmagome',
+    '西馬込',
+    4.25,
+    'S',
+    ['LifeFitness', 'PRECOR'],
+    40,
+    3,
+    1,
+    true,
+    [stationItem(['teak' ], '西馬込', 'https://suumo.jp/chintai/soba/tokyo/ek_08940/')],
+    'ota',
+    true,
+    'プレートロード、フリーウェイト共に充実. Tバーロウもある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/12/9026219190828.jpg'
+  ),
+  dataItem(
+    'kamata',
+    '蒲田',
+    3.45,
+    'B',
+    ['PRECOR'],
+    30,
+    2,
+    1,
+    true,
+    [stationItem(['jrkt' , 'tkig', 'kkhs'], '蒲田', 'https://suumo.jp/chintai/soba/tokyo/ek_08940/')],
+    'ota',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/店舗外観.jpg'
+  ),
+  dataItem(
+    'omoriekimae',
+    '大森駅前',
+    3.5,
+    'A',
+    ['PRECOR'],
+    30,
+    2,
+    1,
+    true,
+    [stationItem(['jrkt'], '大森', 'https://suumo.jp/chintai/soba/tokyo/ek_06360/')],
+    'ota',
+    false,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/02/外観.jpg'
+  ),
+  dataItem(
+    'omori',
+    '大森',
+    3.6,
+    'A',
     ['LifeFitness', 'PRECOR'],
     30,
+    2,
     1,
-    1,
-    false,
-    [stationItem(['teak'], '高輪台', 'https://suumo.jp/chintai/soba/tokyo/ek_22460/')],
+    true,
+    [stationItem(['jrkt'], '大森', 'https://suumo.jp/chintai/soba/tokyo/ek_06360/')],
     'shinagawa',
     false,
-    ''
+    'パワーブロックが59kgまである.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2014/03/外観11.jpg'
   ),
   dataItem(
     'shinagawa',
@@ -947,21 +1204,6 @@ export const gymData: GymData[] = [
     'shinagawa',
     false,
     ''
-  ),
-  dataItem(
-    'omori',
-    '大森',
-    3.6,
-    'A',
-    ['LifeFitness', 'PRECOR'],
-    30,
-    2,
-    1,
-    true,
-    [stationItem(['jrkt'], '大森', 'https://suumo.jp/chintai/soba/tokyo/ek_06360/')],
-    'shinagawa',
-    false,
-    'パワーブロックが59kgまである.'
   ),
   dataItem(
     'oimachi',
@@ -1006,7 +1248,8 @@ export const gymData: GymData[] = [
     [stationItem(['tkmg'], '不動前', 'https://suumo.jp/chintai/soba/tokyo/ek_34410/')],
     'shinagawa',
     true,
-    'サンドバックがある. 素手では叩かないように.ファンクショナルトレーニングに対応するためのマシンがる珍しい店舗. ダンベルはパワーブロックもある.'
+    'サンドバックがある. 素手では叩かないように.ファンクショナルトレーニングに対応するためのマシンがる珍しい店舗. ダンベルはパワーブロックもある.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2014/10/%E3%82%AF%E3%82%A4%E3%83%8A%E3%83%83%E3%82%AF%E3%82%B9.jpg'
   ),
   dataItem(
     'musashikoyama',
@@ -1019,6 +1262,21 @@ export const gymData: GymData[] = [
     1,
     false,
     [stationItem(['tkmg'], '武蔵小山', 'https://suumo.jp/chintai/soba/tokyo/ek_38730/')],
+    'shinagawa',
+    false,
+    ''
+  ),
+  dataItem(
+    'takanawadai',
+    '高輪台',
+    2.95,
+    'C',
+    ['LifeFitness', 'PRECOR'],
+    30,
+    1,
+    1,
+    false,
+    [stationItem(['teak'], '高輪台', 'https://suumo.jp/chintai/soba/tokyo/ek_22460/')],
     'shinagawa',
     false,
     ''
@@ -1081,7 +1339,8 @@ export const gymData: GymData[] = [
     [stationItem(['tkom'], '等々力', 'https://suumo.jp/chintai/soba/tokyo/ek_26240/')],
     'setagaya',
     false,
-    '渓谷くらいしかないイメージの町だが、エニタイムは良さげ. ハンマーストレングスのマシンが充実. プロレス好きは喜びそうな雰囲気.'
+    '渓谷くらいしかないイメージの町だが、エニタイムは良さげ. プレートロードのマシンが充実. プロレス好きは喜びそうな雰囲気.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/07/IMG_29041.jpg'
   ),
   dataItem(
     'shimokitazawa',
@@ -1096,7 +1355,8 @@ export const gymData: GymData[] = [
     [stationItem(['koig','odky'], '下北沢', 'https://suumo.jp/chintai/soba/tokyo/ek_18010/')],
     'setagaya',
     false,
-    ''
+    '', 
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/08/HP-写真-外観.jpg'
   ),
   dataItem(
     'matsubara',
@@ -1141,7 +1401,8 @@ export const gymData: GymData[] = [
     [stationItem(['odky'], '祖師ヶ谷大蔵', 'https://suumo.jp/chintai/soba/tokyo/ek_21760/')],
     'setagaya',
     false,
-    'Tバーローあり.'
+    'Tバーローあり.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/09/180908-外観2.jpg'
   ),
   dataItem(
     'shimotakaido',
@@ -1156,7 +1417,8 @@ export const gymData: GymData[] = [
     [stationItem(['kos'], '下高井戸', 'https://suumo.jp/chintai/soba/tokyo/ek_18140/')],
     'suginami',
     false,
-    'Tバーローあり.'
+    'Tバーローあり.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2017/07/hp用外観①.jpg'
   ),
   dataItem(
     'asagayaminami',
@@ -1246,7 +1508,8 @@ export const gymData: GymData[] = [
     [stationItem(['tmmu'], '方南町', 'https://suumo.jp/chintai/soba/tokyo/ek_28500/')],
     'suginami',
     false,
-    '杉並区では一番良い. ハンマーストレングスのマシンが充実. 筋トレ後は下の階の肉のハナマサで食料調達.'
+    '杉並区では一番良い. プレートロードのマシンが充実. 筋トレ後は下の階の肉のハナマサで食料調達.',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2019/08/image1-4.jpeg'
   ),
   dataItem(
     'shinnakano',
@@ -1261,7 +1524,7 @@ export const gymData: GymData[] = [
     [stationItem(['tmmu'], '新中野', 'https://suumo.jp/chintai/soba/tokyo/ek_20030/')],
     'nakano',
     false,
-    'ハンマーストレングスのマシンがない.'
+    'プレートロードのマシンがない.'
   ),
   dataItem(
     'nakano',
@@ -1291,7 +1554,7 @@ export const gymData: GymData[] = [
     [stationItem(['teoe', 'tmmu'], '中野坂上', 'https://suumo.jp/chintai/soba/tokyo/ek_27320/')],
     'nakano',
     false,
-    'ハンマーストレングスのマシンがない.'
+    'プレートロードのマシンがない.'
   ),
   dataItem(
     'nakanosakaue',
@@ -1306,7 +1569,7 @@ export const gymData: GymData[] = [
     [stationItem(['teoe', 'tmmu'], '中野坂上', 'https://suumo.jp/chintai/soba/tokyo/ek_27320/')],
     'nakano',
     false,
-    'ハンマーストレングスのマシンがない.'
+    'プレートロードのマシンがない.'
   ),
   dataItem(
     'shin-egota',
@@ -1336,7 +1599,8 @@ export const gymData: GymData[] = [
     [stationItem(['sbib'], '江古田', 'https://suumo.jp/chintai/soba/tokyo/ek_04830/')],
     'nerima',
     false,
-    'マシンの設備が良いがダンベルがない. ダンベルを使いたければ近くの新江古田店へ'
+    'マシンの設備が良いがダンベルがない. ダンベルを使いたければ近くの新江古田店へ',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/FullSizeRende外r.jpg'
   ),
 ]
 

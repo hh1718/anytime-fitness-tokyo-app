@@ -1,11 +1,13 @@
 import React from 'react';
 import { RouteComponentProps} from 'react-router-dom';
+import { StaticContext, } from 'react-router';
 import { Page, GymData } from '../../common/types'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import { DataProps } from '../../common/types';
 import Header from './Header'
 import DrawerMenu from './DrawerMenu'
 import { Area } from '../area/Area';
@@ -13,7 +15,6 @@ import { Ranking } from '../ranking/Ranking';
 import { Top } from '../top/Top';
 import { Train } from '../train/Train';
 import { drawerWidth } from '../../common/constants';
-import { StaticContext, } from 'react-router';
 
 const theme = createMuiTheme({
   palette: {
@@ -79,10 +80,6 @@ type OwnProps = {
   routerProps: RouteComponentProps<any, StaticContext, any>
 }
 
-type DataProps = {
-  gymData: GymData[]
-}
-
 const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
   // ここでconstにして型を定義しないと以下のエラー
   // HOC React Hook "useStyles" cannot be called inside a callback.
@@ -97,8 +94,8 @@ const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
       setOpen(false);
     };
     const togleTab = (page: Page) => {
-      console.log(props.routerProps)
-      props.routerProps.history.push(page)
+      console.log(props.routerProps, page)
+      props.routerProps.history.push(`/${page}`)
     }
     const pageStrArray = props.routerProps.match.url.split('/')
     const page = pageStrArray.length > 0 ? pageStrArray[1] as Page : ''
@@ -117,7 +114,7 @@ const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
-              <PageComponent gymData={props.gymData} />
+              <PageComponent gymData={props.gymData} routerProps={props.routerProps}/>
             </Container>
           </main>
         </ThemeProvider>

@@ -1,3 +1,6 @@
+import { RouteComponentProps} from 'react-router-dom';
+import { StaticContext, } from 'react-router';
+
 export type Page = 'top' | 'ranking' | 'area' | 'train' | ''
 
 export type GymData = {
@@ -13,6 +16,7 @@ export type GymData = {
   area: string
   water: boolean
   commnet: string
+  thumbnail: string | undefined
 }
 
 export type Station = {
@@ -25,4 +29,5 @@ export type Rank = 'S' | 'A' | 'B' | 'C' | 'D'
 
 export type DataProps = {
   gymData: GymData[]
+  routerProps: RouteComponentProps<any, StaticContext, any>
 }

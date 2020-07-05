@@ -22,14 +22,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const defaultTrainDisp = '路線'
+
 export const Train = (props: DataProps) => {
   const classes = useStyles();
   const [line, setLine] = React.useState<string>('');
-  const showGymItems = line !== ''
+  const selectedLine = line === '' ? props.routerProps.match.params.id || line : line
+  const showGymItems = selectedLine !== ''
   const gymItems = props.gymData
   return (
     <>
-      <Title>路線</Title>
+      <Title>
+        {selectedLine !== '' && trainLines[selectedLine] !== undefined ? trainLines[selectedLine] : defaultTrainDisp}
+      </Title>
       <div className={classes.trainsWrap}>
         {Object.keys(trainLines).map((k) => (
           <Chip
@@ -38,14 +43,17 @@ export const Train = (props: DataProps) => {
             key={`train_${k}`}
             className={classes.chip}
             clickable
-            onClick={() => setLine(k)}
+            onClick={() => {
+              setLine(k)
+              props.routerProps.history.push(`/train/${k}`)
+            }}
           />
         ))}
       </div>
       {showGymItems
         ? (
             <Grid container spacing={3} className={classes.gymItems}>
-              {gymItems.filter((gym) => gym.station.some((s) => s.lines.includes(line))).map((gym) =>
+              {gymItems.filter((gym) => gym.station.some((s) => s.lines.includes(selectedLine))).map((gym) =>
                 <Grid item key={`line_gym_${gym.namekey}`}>
                   <GymCard gym={gym} />
                 </Grid>        

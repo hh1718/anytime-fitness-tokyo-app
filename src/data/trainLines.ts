@@ -22,6 +22,7 @@ export const trainLines: any = {
   sbib: '西武池袋線',
   sbsj: '西武新宿線',
   tbtj: '東武東上線',
+  tbis: '東武伊勢崎線',
   tkty: '東急東横線',
   tkig: '東急池上線',
   tkmg: '東急目黒線',

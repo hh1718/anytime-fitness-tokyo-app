@@ -26,9 +26,22 @@ const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
       maxWidth: 310,
       textAlign: 'left'
     },
+    cardHead: {
+      /*backgroundColor: theme.palette.primary.main,
+      color: '#fff'*/
+    },
+    cardAction: {
+      padding: 0
+    },
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
+      backgroundSize: '94%'
+    },
+    media_no_thum: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+      backgroundSize: '95%'
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -70,6 +83,7 @@ export default function GymCard(props: OwnProps) {
   return (
     <Card className={classes.root}>
       <CardHeader
+       className={classes.cardHead}
         avatar={
           <Avatar aria-label="gym_rank" className={classes.avatar}>
             {gym.rank}
@@ -80,12 +94,26 @@ export default function GymCard(props: OwnProps) {
             <MoreVertIcon />
           </IconButton>
         }*/
-        title={<Link  href={getUrl(gym.namekey)} target="_blank" rel="noopener" >{`${gym.name}店 (${wards[gym.area as keyof any]})`}</Link>}
-        subheader={gym.score}
+        title={
+          <>
+            {gym.score} 
+            <Link  href={getUrl(gym.namekey)} target="_blank" rel="noopener" >{` ${gym.name}店 (${wards[gym.area as keyof any]})`}
+            </Link>
+          </>
+        }
+        subheader={
+            <span>
+            {gym.station.map((s, idx) =>
+              <Link href={s.rentvalueUrl} target="_blank" rel="noopener" key={`${gym.namekey}_${s.name}`}>
+                {idx !== 0 && ', '}{s.name}駅
+              </Link>
+            )}
+            </span>
+        }
       />
       <CardMedia
-        className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        className={gym.thumbnail ? classes.media : classes.media_no_thum}
+        image={gym.thumbnail ? gym.thumbnail: "/xx/"/*"https://www.anytimefitness.co.jp/assets/img/logo-anytime.svg"*/}
         title="Paella dish"
       />
       <CardContent className={classes.hidden}>
@@ -93,7 +121,7 @@ export default function GymCard(props: OwnProps) {
           This impressive paella is a perfect party dish and 
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions className={classes.cardAction} disableSpacing>
         {/*<IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>*/}
@@ -111,17 +139,6 @@ export default function GymCard(props: OwnProps) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
         <Divider />
-        　<Typography className={classes.cardItem}>
-            最寄駅:
-            <span>
-            {gym.station.map((s) =>
-              <Link href={s.rentvalueUrl} target="_blank" rel="noopener" key={`${gym.namekey}_${s.name}`}>
-                {s.name}
-              </Link>,
-            )}
-            </span>
-          </Typography>
-          <Divider />
           <Typography className={classes.cardItem}>
             パワーラック: <span>{gym.powerRack}</span>
           </Typography>

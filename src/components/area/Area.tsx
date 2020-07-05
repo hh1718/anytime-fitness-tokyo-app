@@ -22,14 +22,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const defaultAreaDisp = '東京23区'
+
 export const Area = (props: DataProps) => {
   const classes = useStyles();
   const [area, setArea] = React.useState<string>('');
-  const showGymItems = area !== ''
+  const selectedArea = area === '' ? props.routerProps.match.params.id || area : area
+  const showGymItems = selectedArea !== ''
   const gymItems = props.gymData
   return (
     <>
-      <Title>東京23区</Title>
+      <Title>
+        {selectedArea !== ''  && wards[selectedArea] !== undefined ? wards[selectedArea] : defaultAreaDisp}
+      </Title>
       <div className={classes.wardsWrap}>
         {Object.keys(wards).map((k) => (
           <Chip
@@ -38,14 +43,17 @@ export const Area = (props: DataProps) => {
             key={`area_${k}`}
             className={classes.chip}
             clickable
-            onClick={() => setArea(k)}
+            onClick={() => {
+              setArea(k)
+              props.routerProps.history.push(`/area/${k}`)
+            }}
           />
         ))}
       </div>
       {showGymItems
         ? (
             <Grid container spacing={3} className={classes.gymItems}>
-              {gymItems.filter((gym) => gym.area === area).map((gym) =>
+              {gymItems.filter((gym) => gym.area === selectedArea).map((gym) =>
                 <Grid item key={`area_gym_${gym.namekey}`}>
                   <GymCard gym={gym} />
                 </Grid>        
