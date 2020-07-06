@@ -4,7 +4,7 @@ import Title from '../common/Title';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
 import { trainLines } from '../../data/trainLines';
-import { DataProps } from '../../common/types';
+import { DataPageProps } from '../../common/types';
 import GymCard from '../common/GymCard';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const defaultTrainDisp = '路線'
+const defaultTrainDisp = '路線検索'
 
-export const Train = (props: DataProps) => {
+export const Train = (props: DataPageProps) => {
   const classes = useStyles();
   const [line, setLine] = React.useState<string>('');
   const selectedLine = line === '' ? props.routerProps.match.params.id || line : line
@@ -53,9 +53,9 @@ export const Train = (props: DataProps) => {
       {showGymItems
         ? (
             <Grid container spacing={3} className={classes.gymItems}>
-              {gymItems.filter((gym) => gym.station.some((s) => s.lines.includes(selectedLine))).map((gym) =>
+              {gymItems.filter((gym) => gym.station.some((s) => s.lines.includes(selectedLine))).sort((a, b) => b.score - a.score).map((gym) =>
                 <Grid item key={`line_gym_${gym.namekey}`}>
-                  <GymCard gym={gym} />
+                  <GymCard gym={gym} cookie={props.cookie} handleCookie={props.handleCookie}/>
                 </Grid>        
               )}
             </Grid>

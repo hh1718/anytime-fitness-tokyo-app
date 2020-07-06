@@ -70,6 +70,8 @@ const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
 
 type OwnProps = {
   gym: GymData
+  cookie: any
+  handleCookie: (gym: string) => void
 }
 
 export default function GymCard(props: OwnProps) {
@@ -96,7 +98,7 @@ export default function GymCard(props: OwnProps) {
         }*/
         title={
           <>
-            {gym.score} 
+            {gym.score} pt 
             <Link  href={getUrl(gym.namekey)} target="_blank" rel="noopener" >{` ${gym.name}店 (${wards[gym.area as keyof any]})`}
             </Link>
           </>

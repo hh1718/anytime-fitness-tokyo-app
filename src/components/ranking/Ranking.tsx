@@ -2,10 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Title from '../common/Title';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import GymCard from '../common/GymCard';
-import { GymData, DataProps } from '../../common/types';
+import { GymData, DataPageProps } from '../../common/types';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    backgroundColor: '#eaedf7'
+    // backgroundColor: '#eaedf7'
   },
   item: {
     display: 'flex',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const Ranking = (props: DataProps) => {
+export const Ranking = (props: DataPageProps) => {
   const gymData = props.gymData;
   const classes = useStyles();
   const items = toptenItem(gymData);
@@ -38,16 +38,18 @@ export const Ranking = (props: DataProps) => {
       <Grid container spacing={1}>
           <Grid item xs={12}>
           {items.map((rankItem) => 
-            <Paper className={classes.paper} key={`ranking_${rankItem.rank}`}>
+            <div className={classes.paper} key={`ranking_${rankItem.rank}`}>
               <Avatar aria-label="gym_rank" className={classes.avatar}>
                 {rankItem.rank}
               </Avatar>
               <Grid container spacing={3}>
               {rankItem.items.map((gym: GymData) =>
-                <Grid item key={`gym_${gym.namekey}`} className={classes.item}><GymCard gym={gym}/></Grid>
+                <Grid item key={`gym_${gym.namekey}`} className={classes.item}>
+                  <GymCard gym={gym}  cookie={props.cookie} handleCookie={props.handleCookie} />
+                </Grid>
               )}
               </Grid>
-            </Paper>
+            </div>
           )}
           </Grid>
       </Grid>

@@ -1,19 +1,18 @@
 import React from 'react';
-import { RouteComponentProps} from 'react-router-dom';
-import { StaticContext, } from 'react-router';
-import { Page, GymData } from '../../common/types'
+import { Page } from '../../common/types'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import { DataProps } from '../../common/types';
+import { PageProps, DataPageProps, BaseProps } from '../../common/types';
 import Header from './Header'
 import DrawerMenu from './DrawerMenu'
 import { Area } from '../area/Area';
 import { Ranking } from '../ranking/Ranking';
 import { Top } from '../top/Top';
 import { Train } from '../train/Train';
+import { Favorite } from '../favorite/Favorit';
 import { drawerWidth } from '../../common/constants';
 
 const theme = createMuiTheme({
@@ -75,16 +74,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type OwnProps = {
-  gymData: GymData[]
-  routerProps: RouteComponentProps<any, StaticContext, any>
-}
-
-const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
+function DashboardHOC<P extends BaseProps>(pageCompFunc: (propsParam: P) => JSX.Element) {
   // ここでconstにして型を定義しないと以下のエラー
   // HOC React Hook "useStyles" cannot be called inside a callback.
   // React Hooks must be called in a React function component or a custom React Hook function
-  const Dashboard: React.FC<OwnProps> = (props: OwnProps) => {
+  const Dashboard: React.FC<P> = (props: P) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState<boolean>(false);
     const handleDrawerOpen = () => {
@@ -94,7 +88,6 @@ const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
       setOpen(false);
     };
     const togleTab = (page: Page) => {
-      console.log(props.routerProps, page)
       props.routerProps.history.push(`/${page}`)
     }
     const pageStrArray = props.routerProps.match.url.split('/')
@@ -114,7 +107,7 @@ const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
-              <PageComponent gymData={props.gymData} routerProps={props.routerProps}/>
+              {pageCompFunc(props)}
             </Container>
           </main>
         </ThemeProvider>
@@ -125,10 +118,22 @@ const DashboardHOC = (PageComponent: React.ComponentType<DataProps>) => {
   return Dashboard
 }
 
-export const TopPage = DashboardHOC(Top)
+export const TopPage = DashboardHOC(
+  (props: PageProps) => <Top gymData={props.gymData} routerProps={props.routerProps} />
+)
 
-export const RankingPage = DashboardHOC(Ranking)
+export const RankingPage = DashboardHOC(
+  (props: DataPageProps) => <Ranking gymData={props.gymData} routerProps={props.routerProps} cookie={props.cookie} handleCookie={props.handleCookie}/>
+)
 
-export const TrainLinePage = DashboardHOC(Train)
+export const TrainLinePage = DashboardHOC(
+  (props: DataPageProps) => <Train gymData={props.gymData} routerProps={props.routerProps} cookie={props.cookie} handleCookie={props.handleCookie}/>
+)
 
-export const AreaPage = DashboardHOC(Area)
+export const AreaPage = DashboardHOC(
+  (props: DataPageProps) => <Area gymData={props.gymData} routerProps={props.routerProps} cookie={props.cookie} handleCookie={props.handleCookie}/>
+)
+
+export const FavoritePage = DashboardHOC(
+  (props: DataPageProps) => <Favorite gymData={props.gymData} routerProps={props.routerProps} cookie={props.cookie} handleCookie={props.handleCookie}/>
+)

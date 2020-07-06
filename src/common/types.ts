@@ -1,9 +1,9 @@
 import { RouteComponentProps} from 'react-router-dom';
 import { StaticContext, } from 'react-router';
 
-export type Page = 'top' | 'ranking' | 'area' | 'train' | ''
+export type Page = 'policy' | 'ranking' | 'area' | 'train' | 'favorite' | ''
 
-export type GymData = {
+export interface GymData {
   namekey: string
   name: string
   score: number
@@ -19,7 +19,7 @@ export type GymData = {
   thumbnail: string | undefined
 }
 
-export type Station = {
+export interface Station {
   lines: string[]
   name: string
   rentvalueUrl: string
@@ -27,7 +27,14 @@ export type Station = {
 
 export type Rank = 'S' | 'A' | 'B' | 'C' | 'D'
 
-export type DataProps = {
+export interface BaseProps {
   gymData: GymData[]
   routerProps: RouteComponentProps<any, StaticContext, any>
 }
+
+export interface DataPageProps extends BaseProps {
+  cookie: any
+  handleCookie: (gym: string) => void
+}
+
+export interface PageProps extends BaseProps {}
