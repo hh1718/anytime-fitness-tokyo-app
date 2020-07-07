@@ -44,7 +44,7 @@ export const Top = (props: PageProps) => {
   const classes = useStyles();
   return (
     <>
-      <Title>当サイトについて</Title>
+      <Title>エニタイムフィットネスランキングについて</Title>
       <Grid container spacing={3}>
           <Grid item xs={12}>
           <Paper className={classes.paper}>

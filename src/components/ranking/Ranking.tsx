@@ -37,7 +37,7 @@ export const Ranking = (props: DataPageProps) => {
 
   return (
     <>
-      <Title>ランキング20</Title>
+      <Title>ジムランキング</Title>
       <Grid container spacing={1}>
           <Grid item xs={12}>
           {items.map((rankItem) => 

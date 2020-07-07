@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const defaultAreaDisp = '東京23区別検索'
+const defaultAreaDisp = '東京23区別ジム検索'
 
 export const Area = (props: DataPageProps) => {
   const classes = useStyles();
@@ -33,7 +33,7 @@ export const Area = (props: DataPageProps) => {
   return (
     <>
       <Title>
-        {selectedArea !== ''  && wards[selectedArea] !== undefined ? wards[selectedArea] : defaultAreaDisp}
+        {selectedArea !== ''  && wards[selectedArea] !== undefined ? `${wards[selectedArea]}のジム` : defaultAreaDisp}
       </Title>
       <div className={classes.wardsWrap}>
         {Object.keys(wards).map((k) => (

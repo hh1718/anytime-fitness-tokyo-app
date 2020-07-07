@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const defaultTrainDisp = '路線検索'
+const defaultTrainDisp = '路線別ジム検索'
 
 export const Train = (props: DataPageProps) => {
   const classes = useStyles();
@@ -33,7 +33,7 @@ export const Train = (props: DataPageProps) => {
   return (
     <>
       <Title>
-        {selectedLine !== '' && trainLines[selectedLine] !== undefined ? trainLines[selectedLine] : defaultTrainDisp}
+        {selectedLine !== '' && trainLines[selectedLine] !== undefined ? `${trainLines[selectedLine]}のジム` : defaultTrainDisp}
       </Title>
       <div className={classes.trainsWrap}>
         {Object.keys(trainLines).map((k) => (

@@ -3,7 +3,7 @@ export const trainLines: any = {
   jryt: 'JR山手線',
   jrkt: 'JR京浜東北線',
   jrth: 'JR東北本線',
-  jrsk: 'JR東埼京線',
+  jrsk: 'JR埼京線',
   jrch: 'JR中央線',
   jrsb: 'JR総武線',
   jrsbk: 'JR総武線快速',

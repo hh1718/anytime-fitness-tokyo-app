@@ -29,7 +29,7 @@ export const PageMenu = (props: Ownprops) => (
         <ListItemIcon>
             <LocationCityIcon />
         </ListItemIcon>
-        <ListItemText primary="市区" />
+        <ListItemText primary="東京23区" />
         </ListItem>
         <ListItem button onClick={() => props.toglePage('train')} selected={props.page === 'train'}>
         <ListItemIcon>
