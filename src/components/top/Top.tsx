@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import { getAvatarColor } from '../../common/util';
 import Title from '../common/Title';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -22,10 +24,21 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: 10
   },
+  rankWrap: {
+    display: 'flex',
+    margin: '20px auto'
+  },
   mailIcon: {
     marginRight: 5
   }
 }));
+
+const avatarStyles = (avatorColor: string) => makeStyles((theme) => ({
+  avatar: {
+    backgroundColor: avatorColor,
+    margin: 3
+  }
+}))
 
 export const Top = (props: PageProps) => {
   const classes = useStyles();
@@ -40,8 +53,15 @@ export const Top = (props: PageProps) => {
             </Typography>
             <Typography className={classes.typography}>  
               当サイトではそんな方々の役立つような情報を提供するために、
-              店舗数の多いanytime fitnessを都内限定ではありますが、「S」「A」「B」「C」「D」の5段階でスコアリングし紹介します。
+              店舗数の多いanytime fitnessを都内限定ではありますが、以下の5段階でスコアリングし紹介します。
             </Typography>
+            <div className={classes.rankWrap}>
+              <Avatar className={avatarStyles(getAvatarColor('S'))().avatar}>S</Avatar>
+              <Avatar className={avatarStyles(getAvatarColor('A'))().avatar}>A</Avatar>
+              <Avatar className={avatarStyles(getAvatarColor('B'))().avatar}>B</Avatar>
+              <Avatar className={avatarStyles(getAvatarColor('C'))().avatar}>C</Avatar>
+              <Avatar className={avatarStyles(getAvatarColor('D'))().avatar}>D</Avatar>
+            </div>
             <Typography className={classes.typography}>
               スコアリングの基準についてはフリーウェイト、プレートロードマシンに比重を置きながら総合的に判断していますが、基本的に私の個人的な主観に依存します。
             </Typography>

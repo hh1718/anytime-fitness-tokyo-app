@@ -10,7 +10,8 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Link from '@material-ui/core/Link';
@@ -19,6 +20,8 @@ import { GymData } from '../../common/types';
 import { wards } from '../../data/area';
 import { getUrl } from '../../data/gymData';
 import { getAvatarColor } from '../../common/util';
+import { cookieKey } from '../../common/constants';
+import { Cookie } from '../../common/types';
 
 const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
   createStyles({
@@ -42,6 +45,9 @@ const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
       height: 0,
       paddingTop: '56.25%', // 16:9
       backgroundSize: '95%'
+    },
+    favorite: {
+      color: theme.palette.secondary.main
     },
     expand: {
       transform: 'rotate(0deg)',
@@ -68,9 +74,9 @@ const useStyles = (avatorColor: string) => makeStyles((theme: Theme) =>
   }),
 );
 
-type OwnProps = {
+interface OwnProps {
   gym: GymData
-  cookie: any
+  cookie: Cookie
   handleCookie: (gym: string) => void
 }
 
@@ -78,10 +84,11 @@ export default function GymCard(props: OwnProps) {
   const gym = props.gym
   const classes = useStyles(getAvatarColor(gym.rank))();
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const cookieValue = props.cookie[cookieKey];
+  const isLiked = Array.isArray(cookieValue) ? cookieValue.includes(gym.namekey) : false;
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -124,9 +131,13 @@ export default function GymCard(props: OwnProps) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardAction} disableSpacing>
-        {/*<IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>*/}
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => props.handleCookie(gym.namekey)}
+          className={classes.favorite}
+        >
+          {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </IconButton>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,

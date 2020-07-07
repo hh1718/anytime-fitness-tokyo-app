@@ -4,6 +4,7 @@ import Title from '../common/Title';
 import Grid from '@material-ui/core/Grid';
 import { DataPageProps } from '../../common/types';
 import GymCard from '../common/GymCard';
+import { cookieKey } from '../../common/constants';
 
 const useStyles = makeStyles((theme) => ({
   wardsWrap: {
@@ -23,12 +24,14 @@ const useStyles = makeStyles((theme) => ({
 
 export const Favorite = (props: DataPageProps) => {
   const classes = useStyles();
-  const gymItems = props.gymData.slice(0,10);
+  const gymItems = props.gymData;
+  const cookieValue = props.cookie[cookieKey];
+  const gyms = Array.isArray(cookieValue) ? gymItems.filter((gym) => cookieValue.includes(gym.namekey)): [];
   return (
     <>
       <Title>お気に入りジム</Title>
       <Grid container spacing={3} className={classes.gymItems}>
-        {gymItems.sort((a, b) => b.score - a.score).map((gym) =>
+        {gyms.sort((a, b) => b.score - a.score).map((gym) =>
           <Grid item key={`favorite_gym_${gym.namekey}`}>
             <GymCard gym={gym} cookie={props.cookie} handleCookie={props.handleCookie} />
           </Grid>        

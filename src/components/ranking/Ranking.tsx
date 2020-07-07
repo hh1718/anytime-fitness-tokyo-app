@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: theme.palette.primary.main,
     marginBottom: 10
+  },
+  rankingItem: {
+    justifyContent: 'space-around'
   }
 }));
 
@@ -42,7 +45,7 @@ export const Ranking = (props: DataPageProps) => {
               <Avatar aria-label="gym_rank" className={classes.avatar}>
                 {rankItem.rank}
               </Avatar>
-              <Grid container spacing={3}>
+              <Grid container spacing={3} className={classes.rankingItem}>
               {rankItem.items.map((gym: GymData) =>
                 <Grid item key={`gym_${gym.namekey}`} className={classes.item}>
                   <GymCard gym={gym}  cookie={props.cookie} handleCookie={props.handleCookie} />

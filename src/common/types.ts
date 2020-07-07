@@ -1,7 +1,7 @@
 import { RouteComponentProps} from 'react-router-dom';
 import { StaticContext, } from 'react-router';
 
-export type Page = 'policy' | 'ranking' | 'area' | 'train' | 'favorite' | ''
+export type Page = 'about' | 'ranking' | 'area' | 'train' | 'favorite' | ''
 
 export interface GymData {
   namekey: string
@@ -38,3 +38,7 @@ export interface DataPageProps extends BaseProps {
 }
 
 export interface PageProps extends BaseProps {}
+
+export type Cookie =  {
+  [name: string]: any;
+}

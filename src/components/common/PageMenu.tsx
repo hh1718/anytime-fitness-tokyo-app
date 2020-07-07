@@ -43,7 +43,7 @@ export const PageMenu = (props: Ownprops) => (
         </ListItemIcon>
         <ListItemText primary="お気に入り" />
         </ListItem>
-        <ListItem button onClick={() => props.toglePage('policy')} selected={props.page === 'policy' || props.page === ''}> 
+        <ListItem button onClick={() => props.toglePage('about')} selected={props.page === 'about' || props.page === ''}> 
         <ListItemIcon>
             <PolicyIcon />
         </ListItemIcon>
