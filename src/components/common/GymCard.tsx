@@ -122,7 +122,7 @@ export default function GymCard(props: OwnProps) {
       />
       <CardMedia
         className={gym.thumbnail ? classes.media : classes.media_no_thum}
-        image={gym.thumbnail ? gym.thumbnail: "/xx/"/*"https://www.anytimefitness.co.jp/assets/img/logo-anytime.svg"*/}
+        image={gym.thumbnail ? gym.thumbnail: "https://www.anytimefitness.co.jp/assets/img/logo-anytime.svg"}
         title="Paella dish"
       />
       <CardContent className={classes.hidden}>
