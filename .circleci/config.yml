@@ -35,15 +35,15 @@ jobs:
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
 
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
-          filters:
-            branches:
-              ignore:
-                - master
-        - deploy
-          filters:
-            branches:
-              only:
-                - master
+  build-test-or-deploy:
+    jobs:
+      - build-and-test:
+        filters:
+          branches:
+            ignore:
+              - master
+      - deploy:
+        filters:
+          branches:
+            only:
+              - master
