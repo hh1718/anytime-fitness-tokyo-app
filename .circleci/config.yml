@@ -10,10 +10,40 @@ jobs:
           name: npm install
           command: npm i
       - run:
-          name: test
+          name: npm test
           command: npm test
+      - run:
+          name: npm build
+          command: npm build
+      
+  deploy:
+    docker:
+      - image: circleci/node:12.18.1
+    steps:
+      - checkout
+      - run:
+          name: npm install
+          command: npm i
+      - run:
+          name: npm test
+          command: npm test
+      - run:
+          name: npm build
+          command: npm build
+      - run:
+          name: deploy to Firebase Hosting
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
 
 workflows:
     build-and-test:
       jobs:
         - build-and-test
+          filters:
+            branches:
+              ignore:
+                - master
+        - deploy
+          filters:
+            branches:
+              only:
+                - master
