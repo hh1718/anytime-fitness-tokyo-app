@@ -14,7 +14,7 @@ jobs:
           command: npm test
       - run:
           name: npm build
-          command: npm build
+          command: npm run build
       
   deploy:
     docker:
@@ -29,7 +29,7 @@ jobs:
           command: npm test
       - run:
           name: npm build
-          command: npm build
+          command: npm run build
       - run:
           name: deploy to Firebase Hosting
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
@@ -40,8 +40,8 @@ workflows:
       - build-and-test:
         filters:
           branches:
-            ignore:
-              - master
+            only:
+              - develop
       - deploy:
         filters:
           branches:
