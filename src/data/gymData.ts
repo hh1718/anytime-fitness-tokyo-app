@@ -1268,6 +1268,22 @@ export const gymData: GymData[] = [
     'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/12/9026219190828.jpg'
   ),
   dataItem(
+    'wmagome',
+    '池上',
+    3.35,
+    'B',
+    ['LifeFitness', 'PRECOR'],
+    30,
+    2,
+    1,
+    false,
+    [stationItem(['tkig' ], '池上', 'https://suumo.jp/chintai/soba/tokyo/ek_01970/')],
+    'ota',
+    true,
+    '',
+    'https://www.anytimefitness.co.jp/wp/wp-content/uploads/2018/03/s_IMG_0289.jpg'
+  ),
+  dataItem(
     'kamata',
     '蒲田',
     3.45,
