@@ -40,7 +40,7 @@ workflows:
       - build-and-test:
         filters:
           branches:
-            ignore: master
+            ignore: "master"
       - deploy:
         filters:
           branches:
