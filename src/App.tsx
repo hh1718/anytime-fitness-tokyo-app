@@ -10,11 +10,13 @@ function App() {
   const [cookies, setCookie] = useCookies([cookieKey]);
   const handleCookie = (gymKey: string) => {
     const values = cookies[cookieKey]
+    const date = new Date()
+    date.setMonth(date.getMonth() + 6)
     if (Array.isArray(values)) {
       const nextValue = values.includes(gymKey) ? values.filter((v) => v !== gymKey) : [gymKey].concat(values)
-      setCookie(cookieKey, nextValue) 
+      setCookie(cookieKey, nextValue, { expires: date }) 
     } else {
-      setCookie(cookieKey, [gymKey]) 
+      setCookie(cookieKey, [gymKey], { expires: date }) 
     }
   }
   return (
