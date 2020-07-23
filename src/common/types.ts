@@ -1,7 +1,7 @@
 import { RouteComponentProps} from 'react-router-dom';
 import { StaticContext, } from 'react-router';
 
-export type Page = 'about' | 'ranking' | 'area' | 'train' | 'favorite' | ''
+export type Page = 'about' | 'ranking' | 'area' | 'train' | 'favorite' | 'map' | ''
 
 export interface GymData {
   namekey: string
