@@ -13,6 +13,7 @@ import { Ranking } from '../ranking/Ranking';
 import { Top } from '../top/Top';
 import { Train } from '../train/Train';
 import { Favorite } from '../favorite/Favorit';
+import { Map } from '../map/Map';
 import { drawerWidth } from '../../common/constants';
 
 const theme = createMuiTheme({
@@ -136,4 +137,8 @@ export const AreaPage = DashboardHOC(
 
 export const FavoritePage = DashboardHOC(
   (props: DataPageProps) => <Favorite gymData={props.gymData} routerProps={props.routerProps} cookie={props.cookie} handleCookie={props.handleCookie}/>
+)
+
+export const MapPage = DashboardHOC(
+  (props: PageProps) => <Map gymData={props.gymData} routerProps={props.routerProps} />
 )
