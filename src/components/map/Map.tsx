@@ -19,7 +19,7 @@ export const Map = (props: PageProps) => {
   const classes = useStyles();
   return (
     <>
-      <Title>マップ</Title>
+      <Title>マップ(3.7以上)</Title>
       <Grid container spacing={3}>        
           <Grid item xs={12}>
           <Paper className={classes.paper}>
