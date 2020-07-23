@@ -26,12 +26,6 @@ export const PageMenu = (props: Ownprops) => (
           </ListItemIcon>
           <ListItemText primary="ランキング" />
         </ListItem>
-        <ListItem button onClick={() => props.toglePage('map')} selected={props.page === 'map'}>
-          <ListItemIcon>
-              <RoomIcon />
-          </ListItemIcon>
-          <ListItemText primary="マップ" />
-        </ListItem>
         <ListItem button onClick={() => props.toglePage('area')} selected={props.page === 'area'}>
           <ListItemIcon>
               <LocationCityIcon />
@@ -49,6 +43,12 @@ export const PageMenu = (props: Ownprops) => (
               <FavoriteIcon />
           </ListItemIcon>
           <ListItemText primary="お気に入り" />
+        </ListItem>
+        <ListItem button onClick={() => props.toglePage('map')} selected={props.page === 'map'}>
+          <ListItemIcon>
+              <RoomIcon />
+          </ListItemIcon>
+          <ListItemText primary="マップ" />
         </ListItem>
         <ListItem button onClick={() => props.toglePage('about')} selected={props.page === 'about' || props.page === ''}> 
           <ListItemIcon>
